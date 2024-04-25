@@ -43,5 +43,4 @@ jobs:
         with:
           command: |
             ver
-            cd('test_mac');
             test_pow(3)
