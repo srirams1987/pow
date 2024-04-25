@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Usage: bash install_nvfortran
+
+# ARCH is the architecture of the current system.
+if [[ "$(uname -m)" == "aarch64" || "$(uname -m)" == "aarch" ]]  ; then
+    ARCH=arm64
+else
+    ARCH=amd64
+fi
+
+echo "deb [trusted=yes] https://developer.download.nvidia.com/hpc-sdk/ubuntu/$ARCH /" | sudo tee /etc/apt/sources.list.d/nvhpc.list
+sudo apt update && sudo apt install -y nvhpc && sudo apt clean  # clean is to remove the downloaded .deb files
+
+NVFORTRAN="$(find /opt/*nvidia* -type f -executable -name nvfortran -print | tail -1)"
+
+sudo ln -s "$NVFORTRAN" /usr/bin
+
+# Show the result of the installation.
+echo "The nvfortran installed is:"
+nvfortran --version
+echo "The path to nvfortran is:"
+command -v nvfortran
