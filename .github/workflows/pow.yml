@@ -19,7 +19,7 @@ jobs:
       matrix:
         # See the following for the configurations of macos-13 runners, especially the versions of Xcode
         # https://github.com/actions/runner-images/blob/macos-13/20240114.1/images/macos/macos-13-Readme.md
-        os: [macos-13]
+        os: [macos-13, macos-14]
         matlab: [R2024a, R2023b, R2023a]
         oneapi: [2023, 2022]
 
