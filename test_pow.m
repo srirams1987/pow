@@ -1,6 +1,6 @@
 function y = test_pow(x)
 
-mex('-setup', 'Fortran');
+mex('-setup', 'Fortran', '-v');
 
 % The following works without any issue.
 linker_options = 'LDFLAGSVER="$LDFLAGSVER -undefined dynamic_lookup"'; % This fixes the failure
